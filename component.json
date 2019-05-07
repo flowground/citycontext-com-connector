@@ -1,0 +1,87 @@
+{
+    "title": "City Context",
+    "description": "City Context provides a straightforward API to access UK Open Data: crime statistics, schools, demographics and more.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/citycontext.com/1.0.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "http://api.citycontext.com/v1",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "user_key": {
+                "label": "user_key (user_key)",
+                "viewClass": "TextFieldView",
+                "note": "City context user key"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "byPoint": {
+            "main": "./lib/actions/byPoint.js",
+            "title": "Query by coordinates (SRID 4326 - decimal degrees)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/byPoint.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "byPostcode": {
+            "main": "./lib/actions/byPostcode.js",
+            "title": "Query by postcode",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/byPostcode.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "usage": {
+            "main": "./lib/actions/usage.js",
+            "title": "Get usage in current month",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/usage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

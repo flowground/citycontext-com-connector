@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "postcode": {
+            "required": true,
+            "type": "string"
+        },
+        "school_search_radius": {
+            "required": false,
+            "type": "integer"
+        },
+        "park_search_radius": {
+            "required": false,
+            "type": "integer"
+        }
+    }
+}

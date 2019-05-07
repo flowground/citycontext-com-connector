@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "lat": {
+            "required": true,
+            "type": "number",
+            "format": "float"
+        },
+        "lon": {
+            "required": true,
+            "type": "number",
+            "format": "float"
+        },
+        "school_search_radius": {
+            "required": false,
+            "type": "integer"
+        },
+        "park_search_radius": {
+            "required": false,
+            "type": "integer"
+        }
+    }
+}
